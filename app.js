@@ -1,9 +1,4 @@
-// -----CREATE COLLECTION ARRAY OF OBJECTS-----
-const collection = [{
-    title: "Lord of Elves",
-    author: "Enid Blyton"
-},
-]
+let collection = [];
 
 //-----CREATE A FUNCTION WHICH ADDS A NEW OBJECT TO THE ARRAY-----
 // ARRAY SHOULD GET THE INFORMATION FROM THE FORM INPUT VALUE
@@ -15,11 +10,15 @@ const bookContainer = document.querySelector('.container');
 
 
 //-----LOCAL STORAGE-----
-// const saveBooks = () => {
-//     const books = {
-//         saveTitle: bookData
-//     }
-// }
+const saveBooks = (book) => {
+    let savedBooks = JSON.parse(localStorage.getItem('books'));
+    console.log(savedBooks);
+    savedBooks.push(book);
+    //const books = {
+    //    saveTitle: bookData
+    //}
+    localStorage.setItem('books', JSON.stringify(savedBooks));
+}
 
 //-----CLEAR INPUT FIELDS FOR BOOKS-----
 const clearFields = () => {
@@ -37,6 +36,7 @@ const addObjectToArray = (title, author) => {
         author: author
     }
     collection.unshift(book);
+    saveBooks(book);
     clearFields();
 }
 
@@ -49,15 +49,45 @@ const createNewBook = (bookInfo) => {
 }
 
 const bookSetup = () => {
-    collection.forEach((book) => {
-        createNewBook(book);
-    })
+    let counter = 0;
+    createNewBook(collection[counter]); 
 }
 
 addBtn.addEventListener('click', () => {
+    setToLocalStorage();
     addObjectToArray();
     bookSetup();
 })
+
+
+const insertBooks = (books) => {
+    books.forEach((book) => {
+        createNewBook(book);
+    });
+}
+
+
+const getFromLocalStorage = () => {
+    let booksContent = localStorage.getItem('books') 
+    if (booksContent != null) {
+        return JSON.parse(booksContent);
+    }
+    return [];
+} 
+
+
+const setToLocalStorage = () => {
+    localStorage.setItem('books', JSON.stringify(collection));
+} 
+
+
+//--------UPDATES THE SHELF 
+window.addEventListener('load', () => {
+    let books = getFromLocalStorage();
+    insertBooks(books);
+}); 
+
+
 
 
 
