@@ -45,6 +45,9 @@ const createNewBook = (bookInfo) => {
     const clone = bookTemplate.content.firstElementChild.cloneNode(true);
     clone.querySelector('.book__name').innerText = bookInfo.title;
     clone.querySelector('.book__author').innerText = bookInfo.author;
+    clone.querySelector('.book__remove-btn').addEventListener('click', () => {
+      console.log(clone);
+    });
     bookContainer.appendChild(clone);
 }
 
@@ -87,7 +90,9 @@ window.addEventListener('load', () => {
     insertBooks(books);
 }); 
 
+const removeBooks = (book) => {
 
+}
 
 
 
