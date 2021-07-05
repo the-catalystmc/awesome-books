@@ -28,6 +28,14 @@ const addObjectToArray = (title, author) => {
     clearFields();
 }
 
+//-----CREATE A FUNCTION TO REMOVE A BOOK FROM THE COLLECTION
+const removeBooks = (book) => {
+    bookName = book.querySelector('.book__name').innerText;
+    bookAuthor = book.querySelector('.book__author').innerText;
+
+    
+}
+
 //-----ADD BOOKS TO DOM-----
 const createNewBook = (bookInfo) => {
     const clone = bookTemplate.content.firstElementChild.cloneNode(true);
@@ -78,10 +86,8 @@ window.addEventListener('load', () => {
     insertBooks(books);
 }); 
 
-const removeBooks = (book) => {
-
-}
 
 
 
-//-----CREATE A FUNCTION TO REMOVE A BOOK FROM THE COLLECTION
+
+
