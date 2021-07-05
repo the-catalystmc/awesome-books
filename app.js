@@ -9,17 +9,6 @@ const bookTemplate = document.querySelector('.books__template');
 const bookContainer = document.querySelector('.container');
 
 
-//-----LOCAL STORAGE-----
-const saveBooks = (book) => {
-    let savedBooks = JSON.parse(localStorage.getItem('books'));
-    console.log(savedBooks);
-    savedBooks.push(book);
-    //const books = {
-    //    saveTitle: bookData
-    //}
-    localStorage.setItem('books', JSON.stringify(savedBooks));
-}
-
 //-----CLEAR INPUT FIELDS FOR BOOKS-----
 const clearFields = () => {
     bookData.book_title.value = '';
@@ -36,7 +25,6 @@ const addObjectToArray = (title, author) => {
         author: author
     }
     collection.unshift(book);
-    saveBooks(book);
     clearFields();
 }
 
@@ -57,8 +45,8 @@ const bookSetup = () => {
 }
 
 addBtn.addEventListener('click', () => {
-    setToLocalStorage();
     addObjectToArray();
+    setToLocalStorage();
     bookSetup();
 })
 
