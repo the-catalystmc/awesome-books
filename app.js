@@ -17,8 +17,8 @@ const clearFields = () => {
 
 //-----ADDS BOOKS TO AN ARRAY-----
 const addObjectToArray = (title, author) => {
-     title = bookData.book_title.value;
-     author = bookData.book_author.value;
+    title = bookData.book_title.value;
+    author = bookData.book_author.value;
 
     const book = {
         title: title,
@@ -28,12 +28,20 @@ const addObjectToArray = (title, author) => {
     clearFields();
 }
 
+const compareBookInfo = (bookName, bookAuthor) => {
+    collection.forEach((book) => {
+        if (book.title === bookName && book.author === bookAuthor) {
+           filteredBooks = collection.filter((elem) => elem != book);
+           insertBooks(filteredBooks);
+        }
+    });
+}
+
 //-----CREATE A FUNCTION TO REMOVE A BOOK FROM THE COLLECTION
 const removeBooks = (book) => {
     bookName = book.querySelector('.book__name').innerText;
     bookAuthor = book.querySelector('.book__author').innerText;
-
-    
+    compareBookInfo(bookName, bookAuthor);
 }
 
 //-----ADD BOOKS TO DOM-----
@@ -42,14 +50,13 @@ const createNewBook = (bookInfo) => {
     clone.querySelector('.book__name').innerText = bookInfo.title;
     clone.querySelector('.book__author').innerText = bookInfo.author;
     clone.querySelector('.book__remove-btn').addEventListener('click', () => {
-      console.log(clone);
+      removeBooks(clone);
     });
     bookContainer.appendChild(clone);
 }
 
 const bookSetup = () => {
-    let counter = 0;
-    createNewBook(collection[counter]); 
+    createNewBook(collection[0]); 
 }
 
 addBtn.addEventListener('click', () => {
@@ -67,15 +74,17 @@ const insertBooks = (books) => {
 
 
 const getFromLocalStorage = () => {
-    let booksContent = localStorage.getItem('books') 
+    let booksContent = localStorage.getItem('books');
     if (booksContent != null) {
         return JSON.parse(booksContent);
     }
-    return [];
+    //return [];
 } 
 
 
 const setToLocalStorage = () => {
+    let books = JSON.parse(localStorage.getItem('books'));
+    collection = collection.concat(books);
     localStorage.setItem('books', JSON.stringify(collection));
 } 
 
