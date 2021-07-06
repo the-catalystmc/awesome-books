@@ -1,43 +1,54 @@
-let collection = [];
-
 // -----CREATE A FUNCTION WHICH ADDS A NEW OBJECT TO THE ARRAY-----
 // ARRAY SHOULD GET THE INFORMATION FROM THE FORM INPUT VALUE
-const bookData = document.querySelector('form');
 const addBtn = document.querySelector('.add__add-btn');
 
 const bookTemplate = document.querySelector('.books__template');
 const bookContainer = document.querySelector('.container');
 
+//----- LIBRARY CLASS -----
+
+class Library {
+  constructor(collection) {
+    this.collection = collection;
+  }
+
+  addObjectToArray() {
+    const bookData = document.querySelector('form');
+    const title1 = bookData.book_title.value;
+    const author1 = bookData.book_author.value;
+  
+    const book = {
+      title: title1,
+      author: author1,
+    };
+    library.collection.push(book);
+    bookData.book_title.value = '';
+    bookData.book_author.value = '';
+  };
+
+}
+
+const library = new Library([]);
+
+
+
 // -----CLEAR INPUT FIELDS FOR BOOKS-----
-const clearFields = () => {
-  bookData.book_title.value = '';
-  bookData.book_author.value = '';
-};
+
 
 const setToLocalStorage = () => {
-  localStorage.setItem('books', JSON.stringify(collection));
+  localStorage.setItem('books', JSON.stringify(library.collection));
 };
 
 // -----ADDS BOOKS TO AN ARRAY-----
-const addObjectToArray = () => {
-  const title1 = bookData.book_title.value;
-  const author1 = bookData.book_author.value;
 
-  const book = {
-    title: title1,
-    author: author1,
-  };
-  collection.push(book);
-  clearFields();
-};
 
 const removeBook = (book) => {
   const bookName = book.querySelector('.book__name').innerText;
   const bookAuthor = book.querySelector('.book__author').innerText;
 
-  collection.forEach((book) => {
+  library.collection.forEach((book) => {
     if (book.title === bookName && book.author === bookAuthor) {
-      collection = collection.filter((elem) => elem !== book);
+      library.collection = library.collection.filter((elem) => elem !== book);
     }
   });
   setToLocalStorage();
@@ -56,9 +67,9 @@ const createNewBook = (bookInfo) => {
 };
 
 addBtn.addEventListener('click', () => {
-  addObjectToArray();
+  library.addObjectToArray();
   setToLocalStorage();
-  createNewBook(collection[collection.length - 1]);
+  createNewBook(library.collection[library.collection.length - 1]);
 });
 
 const insertBooks = (books) => {
@@ -78,6 +89,6 @@ const getFromLocalStorage = () => {
 // --------UPDATES THE SHELF
 window.addEventListener('load', () => {
   const books = getFromLocalStorage();
-  collection = books;
+  library.collection = books;
   insertBooks(books);
 });
