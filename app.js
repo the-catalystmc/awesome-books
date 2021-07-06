@@ -21,25 +21,33 @@ class Library {
       title: title1,
       author: author1,
     };
-    library.collection.push(book);
+    this.collection.push(book);
     bookData.book_title.value = '';
     bookData.book_author.value = '';
   };
 
   setToLocalStorage() {
-    localStorage.setItem('books', JSON.stringify(library.collection));
+    localStorage.setItem('books', JSON.stringify(this.collection));
   };
 
-removeBook(book) {
+  removeBook(book) {
     const bookName = book.querySelector('.book__name').innerText;
     const bookAuthor = book.querySelector('.book__author').innerText;
   
-    library.collection.forEach((book) => {
+    this.collection.forEach((book) => {
+        console.log("bookName", bookName);
+        console.log("bookAuthor", bookAuthor);
+        console.log("---------------------------")
+        console.log("book.title", book.title);
+        console.log("book.author", book.author);
       if (book.title === bookName && book.author === bookAuthor) {
-        library.collection = library.collection.filter((elem) => elem !== book);
+        console.log("bookName", bookName);
+        console.log("bookAuthor", bookAuthor);
+        this.collection = this.collection.filter((elem) => elem !== book);
       }
     });
-    library.setToLocalStorage();
+    console.log(this.collection);
+    this.setToLocalStorage();
     book.remove();
   };
   
@@ -48,7 +56,7 @@ removeBook(book) {
     clone.querySelector('.book__name').innerText = bookInfo.title;
     clone.querySelector('.book__author').innerText = bookInfo.author;
     clone.querySelector('.book__remove-btn').addEventListener('click', () => {
-      library.removeBook(clone);
+      this.removeBook(clone);
     });
     bookContainer.appendChild(clone);
   };
@@ -59,6 +67,12 @@ removeBook(book) {
       return JSON.parse(booksContent);
     }
     return [];
+  };
+
+  insertBooks(books) {
+    books.forEach((book) => {
+      this.createNewBook(book);
+    });
   };
 
 }
@@ -81,11 +95,11 @@ addBtn.addEventListener('click', () => {
   library.createNewBook(library.collection[library.collection.length - 1]);
 });
 
-const insertBooks = (books) => {
-  books.forEach((book) => {
-    library.createNewBook(book);
-  });
-};
+// const insertBooks = (books) => {
+//   books.forEach((book) => {
+//     library.createNewBook(book);
+//   });
+// };
 
 
 
@@ -93,5 +107,5 @@ const insertBooks = (books) => {
 window.addEventListener('load', () => {
   const books = library.getFromLocalStorage();
   library.collection = books;
-  insertBooks(books);
+  library.insertBooks(books);
 });
