@@ -1,4 +1,4 @@
-//----- LIBRARY CLASS -----
+// ----- LIBRARY CLASS -----
 
 class Library {
   constructor(collection) {
@@ -9,7 +9,7 @@ class Library {
     const bookData = document.querySelector('form');
     const title1 = bookData.book_title.value;
     const author1 = bookData.book_author.value;
-  
+
     const book = {
       title: title1,
       author: author1,
@@ -17,26 +17,26 @@ class Library {
     this.collection.push(book);
     bookData.book_title.value = '';
     bookData.book_author.value = '';
-  };
+  }
 
   setToLocalStorage() {
     localStorage.setItem('books', JSON.stringify(this.collection));
-  };
+  }
 
   removeBook(book) {
     const bookName = book.querySelector('.book__name').innerText;
     const bookAuthor = book.querySelector('.book__author').innerText;
-  
+
     this.collection.forEach((book) => {
       if (book.title === bookName && book.author === bookAuthor) {
         this.collection = this.collection.filter((elem) => elem !== book);
       }
     });
-    console.log(this.collection);
+    // console.log(this.collection);
     this.setToLocalStorage();
     book.remove();
-  };
-  
+  }
+
   createNewBook(bookInfo) {
     const bookTemplate = document.querySelector('.books__template');
     const bookContainer = document.querySelector('.container');
@@ -48,22 +48,21 @@ class Library {
       this.removeBook(clone);
     });
     bookContainer.appendChild(clone);
-  };
+  }
 
   getFromLocalStorage() {
     const booksContent = localStorage.getItem('books');
     if (booksContent != null) {
       return JSON.parse(booksContent);
     }
-    return [];
-  };
+    return this.collection;
+  }
 
   insertBooks(books) {
     books.forEach((book) => {
       this.createNewBook(book);
     });
-  };
-
+  }
 }
 
 const library = new Library([]);
@@ -75,7 +74,6 @@ addBtn.addEventListener('click', () => {
   library.setToLocalStorage();
   library.createNewBook(library.collection[library.collection.length - 1]);
 });
-
 
 // --------UPDATES THE SHELF
 window.addEventListener('load', () => {
