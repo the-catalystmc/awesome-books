@@ -16,7 +16,7 @@ const clearFields = () => {
 }
 
 //-----ADDS BOOKS TO AN ARRAY-----
-const addObjectToArray = (title, author) => {
+const addObjectToArray = () => {
     title = bookData.book_title.value;
     author = bookData.book_author.value;
 
@@ -55,14 +55,10 @@ const createNewBook = (bookInfo) => {
     bookContainer.appendChild(clone);
 }
 
-const bookSetup = () => {
-    createNewBook(collection[0]); 
-}
-
 addBtn.addEventListener('click', () => {
     addObjectToArray();
     setToLocalStorage();
-    bookSetup();
+    createNewBook(collection[0]); 
 })
 
 
@@ -78,20 +74,27 @@ const getFromLocalStorage = () => {
     if (booksContent != null) {
         return JSON.parse(booksContent);
     }
-    //return [];
+    return [];
 } 
 
 
 const setToLocalStorage = () => {
-    let books = JSON.parse(localStorage.getItem('books'));
-    collection = collection.concat(books);
+    //console.log("collection", collection);
+    //let books = JSON.parse(localStorage.getItem('books'));
+    //if (books != null) {
+    //    console.log("collection", collection);
+    //    collection = collection.concat(books);
+    //    localStorage.setItem('books', JSON.stringify(collection));
+    //} else {
     localStorage.setItem('books', JSON.stringify(collection));
+    //}
 } 
 
 
 //--------UPDATES THE SHELF 
 window.addEventListener('load', () => {
     let books = getFromLocalStorage();
+    collection = books;
     insertBooks(books);
 }); 
 
