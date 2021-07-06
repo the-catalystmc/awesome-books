@@ -1,10 +1,3 @@
-// -----CREATE A FUNCTION WHICH ADDS A NEW OBJECT TO THE ARRAY-----
-// ARRAY SHOULD GET THE INFORMATION FROM THE FORM INPUT VALUE
-const addBtn = document.querySelector('.add__add-btn');
-
-const bookTemplate = document.querySelector('.books__template');
-const bookContainer = document.querySelector('.container');
-
 //----- LIBRARY CLASS -----
 
 class Library {
@@ -52,6 +45,9 @@ class Library {
   };
   
   createNewBook(bookInfo) {
+    const bookTemplate = document.querySelector('.books__template');
+    const bookContainer = document.querySelector('.container');
+
     const clone = bookTemplate.content.firstElementChild.cloneNode(true);
     clone.querySelector('.book__name').innerText = bookInfo.title;
     clone.querySelector('.book__author').innerText = bookInfo.author;
@@ -79,28 +75,13 @@ class Library {
 
 const library = new Library([]);
 
-
-
-// -----CLEAR INPUT FIELDS FOR BOOKS-----
-
-// -----ADDS BOOKS TO AN ARRAY-----
-
-
-// -----ADD BOOKS TO DOM-----
-
+const addBtn = document.querySelector('.add__add-btn');
 
 addBtn.addEventListener('click', () => {
   library.addObjectToArray();
   library.setToLocalStorage();
   library.createNewBook(library.collection[library.collection.length - 1]);
 });
-
-// const insertBooks = (books) => {
-//   books.forEach((book) => {
-//     library.createNewBook(book);
-//   });
-// };
-
 
 
 // --------UPDATES THE SHELF
