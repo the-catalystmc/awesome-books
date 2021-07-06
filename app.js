@@ -28,20 +28,16 @@ const addObjectToArray = () => {
     clearFields();
 }
 
-const compareBookInfo = (bookName, bookAuthor) => {
-    collection.forEach((book) => {
-        if (book.title === bookName && book.author === bookAuthor) {
-           filteredBooks = collection.filter((elem) => elem != book);
-           insertBooks(filteredBooks);
-        }
-    });
-}
-
-//-----CREATE A FUNCTION TO REMOVE A BOOK FROM THE COLLECTION
-const removeBooks = (book) => {
+const removeBook = (book) => {
     bookName = book.querySelector('.book__name').innerText;
     bookAuthor = book.querySelector('.book__author').innerText;
-    compareBookInfo(bookName, bookAuthor);
+    collection.forEach((book) => {
+        if (book.title === bookName && book.author === bookAuthor) {
+           collection = collection.filter((elem) => elem != book);
+        }
+    });
+    setToLocalStorage();
+    book.remove();
 }
 
 //-----ADD BOOKS TO DOM-----
@@ -50,7 +46,7 @@ const createNewBook = (bookInfo) => {
     clone.querySelector('.book__name').innerText = bookInfo.title;
     clone.querySelector('.book__author').innerText = bookInfo.author;
     clone.querySelector('.book__remove-btn').addEventListener('click', () => {
-        removeBooks(clone);
+        removeBook(clone);
     });
     bookContainer.appendChild(clone);
 }
