@@ -28,14 +28,7 @@ class Library {
     const bookAuthor = book.querySelector('.book__author').innerText;
   
     this.collection.forEach((book) => {
-        console.log("bookName", bookName);
-        console.log("bookAuthor", bookAuthor);
-        console.log("---------------------------")
-        console.log("book.title", book.title);
-        console.log("book.author", book.author);
       if (book.title === bookName && book.author === bookAuthor) {
-        console.log("bookName", bookName);
-        console.log("bookAuthor", bookAuthor);
         this.collection = this.collection.filter((elem) => elem !== book);
       }
     });
