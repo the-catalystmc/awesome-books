@@ -50,7 +50,7 @@ const createNewBook = (bookInfo) => {
     clone.querySelector('.book__name').innerText = bookInfo.title;
     clone.querySelector('.book__author').innerText = bookInfo.author;
     clone.querySelector('.book__remove-btn').addEventListener('click', () => {
-      removeBooks(clone);
+        removeBooks(clone);
     });
     bookContainer.appendChild(clone);
 }
@@ -61,13 +61,11 @@ addBtn.addEventListener('click', () => {
     createNewBook(collection[0]); 
 })
 
-
 const insertBooks = (books) => {
     books.forEach((book) => {
         createNewBook(book);
     });
 }
-
 
 const getFromLocalStorage = () => {
     let booksContent = localStorage.getItem('books');
@@ -77,19 +75,9 @@ const getFromLocalStorage = () => {
     return [];
 } 
 
-
 const setToLocalStorage = () => {
-    //console.log("collection", collection);
-    //let books = JSON.parse(localStorage.getItem('books'));
-    //if (books != null) {
-    //    console.log("collection", collection);
-    //    collection = collection.concat(books);
-    //    localStorage.setItem('books', JSON.stringify(collection));
-    //} else {
     localStorage.setItem('books', JSON.stringify(collection));
-    //}
 } 
-
 
 //--------UPDATES THE SHELF 
 window.addEventListener('load', () => {
@@ -97,9 +85,3 @@ window.addEventListener('load', () => {
     collection = books;
     insertBooks(books);
 }); 
-
-
-
-
-
-
