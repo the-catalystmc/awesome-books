@@ -24,13 +24,14 @@ const addObjectToArray = () => {
         title: title,
         author: author
     }
-    collection.unshift(book);
+    collection.push(book);
     clearFields();
 }
 
 const removeBook = (book) => {
     bookName = book.querySelector('.book__name').innerText;
     bookAuthor = book.querySelector('.book__author').innerText;
+    
     collection.forEach((book) => {
         if (book.title === bookName && book.author === bookAuthor) {
            collection = collection.filter((elem) => elem != book);
@@ -54,7 +55,7 @@ const createNewBook = (bookInfo) => {
 addBtn.addEventListener('click', () => {
     addObjectToArray();
     setToLocalStorage();
-    createNewBook(collection[0]); 
+    createNewBook(collection[collection.length - 1]); 
 })
 
 const insertBooks = (books) => {
