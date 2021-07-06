@@ -53,6 +53,14 @@ removeBook(book) {
     bookContainer.appendChild(clone);
   };
 
+  getFromLocalStorage() {
+    const booksContent = localStorage.getItem('books');
+    if (booksContent != null) {
+      return JSON.parse(booksContent);
+    }
+    return [];
+  };
+
 }
 
 const library = new Library([]);
@@ -79,17 +87,11 @@ const insertBooks = (books) => {
   });
 };
 
-const getFromLocalStorage = () => {
-  const booksContent = localStorage.getItem('books');
-  if (booksContent != null) {
-    return JSON.parse(booksContent);
-  }
-  return [];
-};
+
 
 // --------UPDATES THE SHELF
 window.addEventListener('load', () => {
-  const books = getFromLocalStorage();
+  const books = library.getFromLocalStorage();
   library.collection = books;
   insertBooks(books);
 });
