@@ -26,6 +26,33 @@ class Library {
     bookData.book_author.value = '';
   };
 
+  setToLocalStorage() {
+    localStorage.setItem('books', JSON.stringify(library.collection));
+  };
+
+removeBook(book) {
+    const bookName = book.querySelector('.book__name').innerText;
+    const bookAuthor = book.querySelector('.book__author').innerText;
+  
+    library.collection.forEach((book) => {
+      if (book.title === bookName && book.author === bookAuthor) {
+        library.collection = library.collection.filter((elem) => elem !== book);
+      }
+    });
+    library.setToLocalStorage();
+    book.remove();
+  };
+  
+  createNewBook(bookInfo) {
+    const clone = bookTemplate.content.firstElementChild.cloneNode(true);
+    clone.querySelector('.book__name').innerText = bookInfo.title;
+    clone.querySelector('.book__author').innerText = bookInfo.author;
+    clone.querySelector('.book__remove-btn').addEventListener('click', () => {
+      library.removeBook(clone);
+    });
+    bookContainer.appendChild(clone);
+  };
+
 }
 
 const library = new Library([]);
@@ -34,47 +61,21 @@ const library = new Library([]);
 
 // -----CLEAR INPUT FIELDS FOR BOOKS-----
 
-
-const setToLocalStorage = () => {
-  localStorage.setItem('books', JSON.stringify(library.collection));
-};
-
 // -----ADDS BOOKS TO AN ARRAY-----
 
 
-const removeBook = (book) => {
-  const bookName = book.querySelector('.book__name').innerText;
-  const bookAuthor = book.querySelector('.book__author').innerText;
-
-  library.collection.forEach((book) => {
-    if (book.title === bookName && book.author === bookAuthor) {
-      library.collection = library.collection.filter((elem) => elem !== book);
-    }
-  });
-  setToLocalStorage();
-  book.remove();
-};
-
 // -----ADD BOOKS TO DOM-----
-const createNewBook = (bookInfo) => {
-  const clone = bookTemplate.content.firstElementChild.cloneNode(true);
-  clone.querySelector('.book__name').innerText = bookInfo.title;
-  clone.querySelector('.book__author').innerText = bookInfo.author;
-  clone.querySelector('.book__remove-btn').addEventListener('click', () => {
-    removeBook(clone);
-  });
-  bookContainer.appendChild(clone);
-};
+
 
 addBtn.addEventListener('click', () => {
   library.addObjectToArray();
-  setToLocalStorage();
-  createNewBook(library.collection[library.collection.length - 1]);
+  library.setToLocalStorage();
+  library.createNewBook(library.collection[library.collection.length - 1]);
 });
 
 const insertBooks = (books) => {
   books.forEach((book) => {
-    createNewBook(book);
+    library.createNewBook(book);
   });
 };
 
