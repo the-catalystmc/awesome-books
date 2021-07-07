@@ -1,3 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 h2 {
   color: black;
+  text-align: center;
+  margin: 5px 0;
+}
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  align-items: center;
+}
+
+.book:nth-of-type(2n + 1) {
+  background-color: lightgray;
+}
+
+.book__author {
+  margin-left: 5px;
+}
+
+.book__remove-btn {
+  height: auto;
+  width: auto;
+  padding: 3px 5px;
+  box-shadow: 4px 4px 2px rgb(0, 0, 0); 
+}
+
+.book-description {
+  display: flex;
 }

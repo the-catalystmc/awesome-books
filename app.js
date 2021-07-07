@@ -42,7 +42,7 @@ class Library {
     const bookContainer = document.querySelector('.container');
 
     const clone = bookTemplate.content.firstElementChild.cloneNode(true);
-    clone.querySelector('.book__name').innerText = bookInfo.title;
+    clone.querySelector('.book__name').innerText = "\"" + bookInfo.title + "\"" + " by";
     clone.querySelector('.book__author').innerText = bookInfo.author;
     clone.querySelector('.book__remove-btn').addEventListener('click', () => {
       this.removeBook(clone);
