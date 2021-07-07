@@ -54,10 +54,12 @@ h2 {
 }
 
 .book__remove-btn {
+  font-weight: bolder;
   height: auto;
   width: auto;
   padding: 3px 5px;
   box-shadow: 4px 4px 2px rgb(0, 0, 0); 
+  background-color: #ed842a;
 }
 
 .book-description {
@@ -85,6 +87,8 @@ h2 {
 }
 
 .add__add-btn {
+  background-color: #44afdc;
+  font-weight: bolder;
   height: auto;
   width: 40px;
   padding: 3px 5px;
