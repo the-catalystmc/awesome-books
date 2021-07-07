@@ -47,7 +47,7 @@ h2 {
 
 .book__name::after {
   content: close-quote;
-} 
+}
 
 .book__author {
   margin-left: 5px;
@@ -58,7 +58,7 @@ h2 {
   height: auto;
   width: auto;
   padding: 3px 5px;
-  box-shadow: 4px 4px 2px rgb(0, 0, 0); 
+  box-shadow: 4px 4px 2px rgb(0, 0, 0);
   background-color: #ed842a;
 }
 
