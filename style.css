@@ -36,6 +36,19 @@ h2 {
   background-color: lightgray;
 }
 
+.book__name {
+  margin-right: 5px;
+  quotes: '"' '"' "'" "'";
+}
+
+.book__name::before {
+  content: open-quote;
+}
+
+.book__name::after {
+  content: close-quote;
+} 
+
 .book__author {
   margin-left: 5px;
 }
