@@ -11,6 +11,12 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  padding: 0 5px;
+}
+
+.container {
+  border: 2px black solid;
+  margin: 10px 0 15px 0;
 }
 
 h2 {
@@ -20,12 +26,10 @@ h2 {
 }
 
 .book {
-  border: 2px;
   display: flex;
   justify-content: space-between;
   padding: 5px 10px;
   align-items: center;
-  margin-bottom: 15px;
 }
 
 .book:nth-of-type(2n + 1) {
@@ -76,5 +80,5 @@ h2 {
 }
 
 .input {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
