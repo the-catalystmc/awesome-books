@@ -8,6 +8,11 @@ body {
   width: 100%;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 h2 {
   color: black;
   text-align: center;
@@ -15,6 +20,7 @@ h2 {
 }
 
 .book {
+  border: 2px;
   display: flex;
   justify-content: space-between;
   padding: 5px 10px;
@@ -42,8 +48,10 @@ h2 {
 }
 
 .add {
+  align-self: center;
   display: flex;
   flex-direction: column;
+  width: 60%;
 }
 
 .book__line {
@@ -61,7 +69,12 @@ h2 {
 
 .add__add-btn {
   height: auto;
-  width: auto;
+  width: 40px;
   padding: 3px 5px;
-  box-shadow: 4px 4px 2px rgb(0, 0, 0); 
+  box-shadow: 4px 4px 2px rgb(0, 0, 0);
+  align-self: flex-end;
+}
+
+.input {
+  margin-bottom: 5px;
 }
