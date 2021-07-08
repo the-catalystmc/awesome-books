@@ -69,22 +69,21 @@ const library = new Library([]);
 
 const addBtn = document.querySelector('.add__add-btn');
 
-const DateTime = luxon.DateTime;
+/* global luxon */
+/* eslint no-undef: "error" */
+const { DateTime } = luxon.DateTime;
 
 const displayDate = () => {
   const dateNowFormat = DateTime.now().toFormat('FF');
-  document.querySelector(".date-now").innerText = dateNowFormat;
-}
+  document.querySelector('.date-now').innerText = dateNowFormat;
+};
 
 const listBtn = document.querySelector('.list__nav');
 const addBookBtn = document.querySelector('.list__add');
 const contactBtn = document.querySelector('.list__contact');
-
-
 const listOption = document.querySelector('.container__list');
 const listAdd = document.querySelector('.container__add');
 const listContact = document.querySelector('.container__contact');
-
 
 listBtn.addEventListener('click', () => {
   listOption.style.display = 'block';
@@ -119,5 +118,5 @@ window.addEventListener('load', () => {
 });
 
 setInterval(() => {
-  displayDate()
+  displayDate();
 }, 1000);

@@ -19,7 +19,7 @@ nav {
   justify-content: space-between;
   border: 2px solid black;
   padding: 5px;
-  margin: 5px 5px 0px 5px;
+  margin: 5px 5px 0 5px;
 }
 
 .nav-list {
