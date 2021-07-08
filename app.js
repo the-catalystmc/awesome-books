@@ -76,6 +76,10 @@ const displayDate = () => {
   document.querySelector(".date-now").innerText = dateNowFormat;
 }
 
+const listOption = document.querySelector('.container__list');
+const listAdd = document.querySelector('.container__add');
+const listContact = document.querySelector('.container__contact');
+
 addBtn.addEventListener('click', () => {
   library.addObjectToArray();
   library.setToLocalStorage();
