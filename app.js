@@ -72,7 +72,7 @@ const addBtn = document.querySelector('.add__add-btn');
 const DateTime = luxon.DateTime;
 
 const displayDate = () => {
-  const dateNowFormat = DateTime.now().toFormat('ff');
+  const dateNowFormat = DateTime.now().toFormat('FF');
   document.querySelector(".date-now").innerText = dateNowFormat;
 }
 
