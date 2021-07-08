@@ -132,3 +132,21 @@ h2 {
 .input {
   margin-bottom: 10px;
 }
+
+.container__add {
+  display: flex;
+  flex-direction: column;
+}
+
+.container__contact {
+  display: flex;
+  flex-direction: column;
+align-items: center;
+align-self: center;
+width: 80%;
+}
+
+.container__contact ul {
+  align-self: flex-start;
+  margin: 0 0 0 40px;
+}

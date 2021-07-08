@@ -20,11 +20,10 @@
       </ul>
     </nav>
     <p class="date-now"></p>
-    <h2 class="books__header--title">All awesome books</h2>
-    <h2 class="book__addnew">Add a New Book</h2>
   </header>
   <main>
     <div class="container" id="list">
+      <h2 class="books__header--title">All awesome books</h2>
       <template class="books__template">
         <div class="book">
           <div class="book-description">
@@ -35,15 +34,32 @@
           <button class="book__remove-btn">Remove</button>
         </div>
       </template>
-      <form class="add" id="add">
-        <input type="text" class="add__title input" id="add__title" name="book_title" placeholder="Title" required />
-        <input type="text" class="add__author input" id="add__author" name="book_author" placeholder="Author" required />
-        <input type="submit" class="add__add-btn input" value="Add" />
-      </form>
     </div>
     <hr class="book__line" />
-   
+    <div class="container__add">
+      <h2 class="book__addnew">Add a New Book</h2>
+    <form class="add" id="add">
+      <input type="text" class="add__title input" id="add__title" name="book_title" placeholder="Title" required />
+      <input type="text" class="add__author input" id="add__author" name="book_author" placeholder="Author" required />
+      <input type="submit" class="add__add-btn input" value="Add" />
+    </form>
+  </div>
+  <div class="container__contact">
+    <h2 class="book__addnew">Contact information</h2>
+    <p class="contact__content">
+      Do you have any questions or do you just want to say "Hello"?
+      You can reach out to us.
+    </p>
+    <ul class="contact__info">
+      <li class="email">Our email </li>
+      <li class="phone">Our phone number</li>
+      <li class="address">Our address</li>
+    </ul>
+  </div>
   </main>
+  <footer class="footer">
+    <p>Copyright 2021</p>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
   <script src="app.js"></script>
 </body>

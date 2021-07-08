@@ -76,7 +76,6 @@ const displayDate = () => {
   document.querySelector(".date-now").innerText = dateNowFormat;
 }
 
-
 addBtn.addEventListener('click', () => {
   library.addObjectToArray();
   library.setToLocalStorage();
