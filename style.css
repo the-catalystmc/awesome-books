@@ -9,6 +9,11 @@ body {
   padding: 0 10px;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -29,6 +34,11 @@ nav {
 .nav-list a {
   text-decoration: none;
   color: black;
+}
+
+.date-now {
+  align-self: flex-end;
+  padding: 3px;
 }
 
 main {
