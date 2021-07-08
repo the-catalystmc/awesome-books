@@ -76,9 +76,33 @@ const displayDate = () => {
   document.querySelector(".date-now").innerText = dateNowFormat;
 }
 
+const listBtn = document.querySelector('.list__nav');
+const addBookBtn = document.querySelector('.list__add');
+const contactBtn = document.querySelector('.list__contact');
+
+
 const listOption = document.querySelector('.container__list');
 const listAdd = document.querySelector('.container__add');
 const listContact = document.querySelector('.container__contact');
+
+
+listBtn.addEventListener('click', () => {
+  listOption.style.display = 'block';
+  listAdd.style.display = 'none';
+  listContact.style.display = 'none';
+});
+
+addBookBtn.addEventListener('click', () => {
+  listOption.style.display = 'none';
+  listAdd.style.display = 'flex';
+  listContact.style.display = 'none';
+});
+
+contactBtn.addEventListener('click', () => {
+  listOption.style.display = 'none';
+  listAdd.style.display = 'none';
+  listContact.style.display = 'flex';
+});
 
 addBtn.addEventListener('click', () => {
   library.addObjectToArray();
