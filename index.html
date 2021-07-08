@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <link rel="stylesheet" href="style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
   <title>Awesome Books App</title>
 </head>
 
@@ -14,16 +14,17 @@
     <nav>
       <p>Awesome Books</p>
       <ul class="nav-list">
-        <li><a href="">List |</a></li> 
-        <li><a href="">Add new |</a></li>
+        <li><a href="#list" class="list__nav>List |</a></li> 
+        <li><a href="#add" class="add__nav">Add new |</a></li>
         <li><a href="">Contact</a></li>
       </ul>
     </nav>
     <p class="date-now"></p>
     <h2 class="books__header--title">All awesome books</h2>
+    <h2 class="book__addnew">Add a New Book</h2>
   </header>
   <main>
-    <div class="container">
+    <div class="container" id="list">
       <template class="books__template">
         <div class="book">
           <div class="book-description">
@@ -34,14 +35,14 @@
           <button class="book__remove-btn">Remove</button>
         </div>
       </template>
+      <form class="add" id="add">
+        <input type="text" class="add__title input" id="add__title" name="book_title" placeholder="Title" required />
+        <input type="text" class="add__author input" id="add__author" name="book_author" placeholder="Author" required />
+        <input type="submit" class="add__add-btn input" value="Add" />
+      </form>
     </div>
     <hr class="book__line" />
-    <h2 class="book__addnew">Add a New Book</h2>
-    <form class="add">
-      <input type="text" class="add__title input" id="add__title" name="book_title" placeholder="Title" required />
-      <input type="text" class="add__author input" id="add__author" name="book_author" placeholder="Author" required />
-      <input type="submit" class="add__add-btn input" value="Add" />
-    </form>
+   
   </main>
   <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
   <script src="app.js"></script>
