@@ -117,3 +117,7 @@ window.addEventListener('load', () => {
   library.insertBooks(books);
   displayDate();
 });
+
+setInterval(() => {
+  displayDate()
+}, 1000);
