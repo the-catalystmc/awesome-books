@@ -69,6 +69,39 @@ const library = new Library([]);
 
 const addBtn = document.querySelector('.add__add-btn');
 
+/* global luxon */
+/* eslint no-undef: "error" */
+
+const displayDate = () => {
+  const dateNowFormat = luxon.DateTime.now().toFormat('FF');
+  document.querySelector('.date-now').innerText = dateNowFormat;
+};
+
+const listBtn = document.querySelector('.list__nav');
+const addBookBtn = document.querySelector('.list__add');
+const contactBtn = document.querySelector('.list__contact');
+const listOption = document.querySelector('.container__list');
+const listAdd = document.querySelector('.container__add');
+const listContact = document.querySelector('.container__contact');
+
+listBtn.addEventListener('click', () => {
+  listOption.style.display = 'block';
+  listAdd.style.display = 'none';
+  listContact.style.display = 'none';
+});
+
+addBookBtn.addEventListener('click', () => {
+  listOption.style.display = 'none';
+  listAdd.style.display = 'flex';
+  listContact.style.display = 'none';
+});
+
+contactBtn.addEventListener('click', () => {
+  listOption.style.display = 'none';
+  listAdd.style.display = 'none';
+  listContact.style.display = 'flex';
+});
+
 addBtn.addEventListener('click', () => {
   library.addObjectToArray();
   library.setToLocalStorage();
@@ -80,4 +113,9 @@ window.addEventListener('load', () => {
   const books = library.getFromLocalStorage();
   library.collection = books;
   library.insertBooks(books);
+  displayDate();
 });
+
+setInterval(() => {
+  displayDate();
+}, 1000);
