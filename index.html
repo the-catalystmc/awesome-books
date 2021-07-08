@@ -14,7 +14,7 @@
     <nav>
       <p>Awesome Books</p>
       <ul class="nav-list">
-        <li><a href="#list" class="list__nav>List |</a></li> 
+        <li><a href="#list" class="list__nav">List |</a></li> 
         <li><a href="#add" class="add__nav">Add new |</a></li>
         <li><a href="">Contact</a></li>
       </ul>
@@ -22,8 +22,9 @@
     <p class="date-now"></p>
   </header>
   <main>
-    <div class="container" id="list">
+    <div class="container__list">
       <h2 class="books__header--title">All awesome books</h2>
+    <div class="container" id="list">
       <template class="books__template">
         <div class="book">
           <div class="book-description">
@@ -35,7 +36,7 @@
         </div>
       </template>
     </div>
-    <hr class="book__line" />
+  </div>
     <div class="container__add">
       <h2 class="book__addnew">Add a New Book</h2>
     <form class="add" id="add">
