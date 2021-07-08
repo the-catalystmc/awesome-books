@@ -69,6 +69,14 @@ const library = new Library([]);
 
 const addBtn = document.querySelector('.add__add-btn');
 
+const DateTime = luxon.DateTime;
+
+const displayDate = () => {
+  const dateNowFormat = DateTime.now().toFormat('ff');
+  document.querySelector(".date-now").innerText = dateNowFormat;
+}
+
+
 addBtn.addEventListener('click', () => {
   library.addObjectToArray();
   library.setToLocalStorage();
@@ -80,4 +88,5 @@ window.addEventListener('load', () => {
   const books = library.getFromLocalStorage();
   library.collection = books;
   library.insertBooks(books);
+  displayDate();
 });
